@@ -1,3 +1,4 @@
+import os
 import json
 from flask import Flask
 app = Flask('app')
@@ -52,6 +53,6 @@ def get_por_historico_estados(data):
     return dados['regioes']
 
 
-
-
-app.run(host='0.0.0.0', port=8080)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
