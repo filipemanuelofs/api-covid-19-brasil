@@ -8,10 +8,10 @@ NOMENCLATURA_PADRAO = 'covid-19-br.json'
 
 def get_nome_arquivo_historico(data):
     data = data.replace('-', '')
-    return NOMENCLATURA_PADRAO.replace('.json', '-' + data + '.json')
+    return './dados/' + NOMENCLATURA_PADRAO.replace('.json', '-' + data + '.json')
 
 
-def get_dados(dados = 'covid-19-br.json'):
+def get_dados(dados = './dados/covid-19-br.json'):
     f = open(dados, 'r')
     return json.loads(f.read())
 
