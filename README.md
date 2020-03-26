@@ -1,5 +1,5 @@
 # API COVID-19 Brasil
-API para os casos de COVID-19 no Brasil e regiões
+API para os casos de COVID-19 no Brasil e regiões.
 
 ## Endereço
 Temporariamente em: https://api-covid-19-brasil.herokuapp.com/
@@ -15,8 +15,12 @@ Temporariamente em: https://api-covid-19-brasil.herokuapp.com/
 | /historicos/**{data}**/regioes | retorna os dados históricos gerais das regiões | /historicos/20200321/regioes |
 
 ## Fonte
-Todos os dados/números são obtidos através do site do [Ministério da Saúde](https://saude.gov.br/) por meio das atualizações diárias que estão sendo postadas.
+Todos os dados/números são obtidos através do [site](https://saude.gov.br/)/[Twitter](https://twitter.com/minsaude) do Ministério da Saúde e pelo editoral do [G1 Coronavírus](https://g1.globo.com/bemestar/coronavirus).
 
+25/03/2020
+- Atualização: Dados retroativos estão sendo adicionados até a data corrente.
+
+24/03/2020
 - Do dia [21/03/2020](https://www.saude.gov.br/noticias/agencia-saude/46571-coronavirus-18-mortes-e-1-128-casos-confirmados) em diante, o Ministério da Saúde passou a informar os casos detalhadamente por região e com os números de infectados, porcentagem e consolidação por UF e região, por isso os datas históricas tem o seu início a partir deste dia.
 
 ## Execução
@@ -28,7 +32,7 @@ Todos os dados/números são obtidos através do site do [Ministério da Saúde]
 ````
 - Windows 
 ````
-	> C:\Python\python.exe -m pip install
+	> C:\Python\python.exe -m pip install requirements.txt
 	> set FLASK_APP=main.py
 	> flask run
 ````
