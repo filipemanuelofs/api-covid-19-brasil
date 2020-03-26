@@ -226,5 +226,9 @@
                 }
             ]
         }
-    }
+    },
+    "fonte": [
+        "https://www.saude.gov.br/noticias/agencia-saude/46573-coronavirus-25-mortes-e-1-546-casos-confirmados",
+        "https://g1.globo.com/bemestar/coronavirus/noticia/2020/03/22/casos-de-coronavirus-no-brasil-em-22-de-marco.ghtml"
+    ]
 }

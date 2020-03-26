@@ -226,5 +226,9 @@
                 }
             ]
         }
-    }
+    },
+    "fonte": [
+        "https://www.saude.gov.br/noticias/agencia-saude/46600-coronavirus-57-mortes-e-2-433-casos-confirmados",
+        "https://g1.globo.com/bemestar/coronavirus/noticia/2020/03/25/casos-de-coronavirus-no-brasil-em-25-de-marco.ghtml"
+    ]
 }
