@@ -17,6 +17,9 @@ Temporariamente em: https://api-covid-19-brasil.herokuapp.com/
 ## Fonte
 Todos os dados/números são obtidos através do [site](https://saude.gov.br/)/[Twitter](https://twitter.com/minsaude) do Ministério da Saúde e pelo editoral do [G1 Coronavírus](https://g1.globo.com/bemestar/coronavirus).
 
+26/03/2020
+- Não foram encontrados os números específicos de infectados por estados para o dia 20/03/2020, apenas os números totais do Brasil, e algumas regiões como SP, RJ e MG.
+
 25/03/2020
 - Atualização: Dados retroativos estão sendo adicionados até a data corrente.
 
