@@ -29,6 +29,14 @@ def get_dados(dados = './dados/covid-19-br.json'):
 
 
 @app.route('/')
+def get_todas_informacoes():
+    try:
+        return get_dados()
+    except Exception as e:
+        return jsonify(erro=True, mensagem=str(e))
+
+
+@app.route('/brasil')
 def get_brasil():
     try:
         return get_dados()['brasil']
@@ -88,7 +96,11 @@ def get_por_historico_inicio_fim_brasil(dataInicio, dataFim):
                 confirmados_inicio=brasil_inicio['confirmados'],
                 confirmados_fim=brasil_fim['confirmados'],
                 qnt_novos_casos=int(brasil_fim['confirmados']) - int(brasil_inicio['confirmados']),
-                porcentagem=str(int(int(int(brasil_fim['confirmados']) * 100) / int(brasil_inicio['confirmados']))) + "%"
+                porcentagem_novos_casos=str(int(int(int(brasil_fim['confirmados']) * 100) / int(brasil_inicio['confirmados']))) + "%",
+                mortes_inicio=brasil_inicio['mortes'],
+                mortes_fim=brasil_fim['mortes'],
+                qnt_novas_mortes=int(brasil_fim['mortes']) - int(brasil_inicio['mortes']),
+                porcentagem_novas_mortes=str(int(int(int(brasil_fim['mortes']) * 100) / int(brasil_inicio['mortes']))) + "%",
             )
         else:
             return jsonify(erro=True, mensagem="A data fim deve ser maior que a data início.")
