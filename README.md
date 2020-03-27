@@ -13,7 +13,7 @@ Temporariamente em: https://api-covid-19-brasil.herokuapp.com/
 | /historicos/**{data}** | retorna os dados históricos gerais de uma determinada data, onde **{data}** => formato YYYYMMDD | /historicos/20200321 |
 | /historicos/**{data}**/brasil | retorna os dados históricos gerais do Brasil | /historicos/20200321/brasil |
 | /historicos/**{data}**/regioes | retorna os dados históricos gerais das regiões | /historicos/20200321/regioes |
-| /historicos/**{dataInicio}**/**{dataFim**/brasil | retorna os dados históricos a partir da data de início até a data fim | /historicos/20200321/20200326/brasil |
+| /historicos/**{dataInicio}**/**{dataFim}**/brasil | retorna os dados da quantidade inicial, final, novos casos e porcentagem a partir da data de início até a data fim | /historicos/20200321/20200323/brasil |
 
 ## Fonte
 Todos os dados/números são obtidos através do [site](https://saude.gov.br/)/[Twitter](https://twitter.com/minsaude) do Ministério da Saúde e pelo editoral do [G1 Coronavírus](https://g1.globo.com/bemestar/coronavirus).
