@@ -12,6 +12,15 @@ def formatar_data(data, padrao='%d/%m'):
     return datetime.strptime(data, '%d/%m/%Y %H:%M').strftime(padrao)
 
 
+def get_dados_grafico():
+    historicos = get_dados_historicos_arquivo()
+    dados = {}
+    for historico in historicos:
+        dados[formatar_data(historico['brasil']['atualizado_em'])] = int(
+            historico['brasil']['confirmados'])
+    return dados
+
+
 def get_historicos_datas():
     historicos = get_dados_historicos_arquivo()
     datas = []
@@ -105,8 +114,8 @@ def get_index():
                            data_pior_dia=get_informacoes_pior_dia()[0],
                            casos_pior_dia=get_informacoes_pior_dia()[1],
                            obitos_brasil=get_obitos_brasil(),
-                           datas_grafico=get_historicos_datas(),
-                           confirmados_grafico=get_historicos_casos_confirmados())
+                           datas_grafico=list(get_dados_grafico().keys()),
+                           confirmados_grafico=list(get_dados_grafico().values()))
 
 
 @app.route('/tudo')
