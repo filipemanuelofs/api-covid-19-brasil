@@ -1,0 +1,54 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #container {
+      text-align: center;
+  }
+  
+  .negrito {
+      font-weight: bold;
+  }
+  
+  .numero-grande {
+      font-size: 90px;
+  }
+  
+  .numero-medio {
+      font-size: 35px;
+  }
+  
+  .texto-grande {
+      font-size: x-large;
+  }
+  
+  .texto-medio {
+      font-size: x
+  }
+  
+  .azul {
+      color: #2980b9;
+  }
+  
+  .verde {
+      color: #27ae60;
+  }
+  
+  .vermelho {
+      color: #c0392b;
+  }
+  
+  .laranja {
+      color: #f39c12;
+  }
+  
+  .cinza {
+      color: #34495e;
+  }
+  
+  .branco {
+      color: #ecf0f1;
+  }

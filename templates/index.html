@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Coronavírus no Brasil</title>
+	<script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
+	<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div id="container">
+		<h1>Números do coronavírus no Brasil</h1>
+		<hr />
+		<p class="texto-grande ">Casos confirmados no Brasil pelo Ministério da Saúde:</p>
+		<span class="numero-grande negrito azul">{{confirmados_brasil}}</span>
+		<p class="texto-grande ">Óbitos:</p>
+		<span class="numero-grande negrito vermelho">{{obitos_brasil}}</span>
+		<p class="texto-grande ">Primeiro caso confirmado:</p>
+		<span class="numero-grande negrito laranja">{{primeiro_caso_confirmado}}</span>
+		<p class="texto-grande ">Pior dia até agora: <span class="numero-medio negrito">{{data_pior_dia}}</span> </p>
+		<span class="numero-grande negrito verde">{{casos_pior_dia}}</span>
+		<p class="">novos casos confirmados</p>
+		<p class="texto-grande ">Gráfico de casos confirmados</p>
+		<canvas id="canvas" width="600" height="400"></canvas>
+	</div>
+	<script>
+		var config = {
+			type: 'line',
+			data: {
+				labels: {{ datas_grafico | tojson}},
+		datasets: [{
+			label: 'Casos confirmados',
+			backgroundColor: "#f1c40f",
+			borderColor: "#f39c12",
+			data: {{ confirmados_grafico | tojson}},
+			fill: false,
+				}]
+			},
+		options: {
+			responsive: false,
+				title: { },
+			tooltips: {
+				mode: 'index',
+					intersect: false,
+				},
+			hover: {
+				mode: 'nearest',
+					intersect: true
+			},
+			scales: {
+				xAxes: [{
+					display: true,
+					scaleLabel: {
+						display: true,
+						labelString: 'Período'
+					}
+				}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Casos confirmados'
+						}
+					}]
+			}
+		}
+		};
+
+		window.onload = function () {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myLine = new Chart(ctx, config);
+		};
+	</script>
+</body>
+
+</html>
