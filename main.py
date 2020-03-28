@@ -76,8 +76,8 @@ def get_informacoes_pior_dia():
     num_confirmados = 0
     num_confirmados_aux = 0
     for index, historico in enumerate(historicos):
-        num_confirmados = int(historico['brasil']['confirmados']) - \
-            int(historicos[index+1]['brasil']['confirmados'])
+        num_confirmados = int(int(
+            historico['brasil']['confirmados']) - int(historicos[index+1]['brasil']['confirmados']))
         if num_confirmados > num_confirmados_aux:
             num_confirmados_aux = num_confirmados
         else:
