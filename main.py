@@ -12,13 +12,20 @@ def formatar_data(data, padrao='%d/%m'):
     return datetime.strptime(data, '%d/%m/%Y %H:%M').strftime(padrao)
 
 
-def get_dados_grafico():
+def get_datas_para_grafico():
     historicos = get_dados_historicos_arquivo()
-    dados = {}
+    datas = []
     for historico in historicos:
-        dados[formatar_data(historico['brasil']['atualizado_em'])] = int(
-            historico['brasil']['confirmados'])
-    return dados
+        datas.append(formatar_data(historico['brasil']['atualizado_em']))
+    return datas
+
+
+def get_confirmados_para_grafico():
+    historicos = get_dados_historicos_arquivo()
+    confirmados = []
+    for historico in historicos:
+        confirmados.append(historico['brasil']['confirmados'])
+    return confirmados
 
 
 def get_historicos_datas():
@@ -39,8 +46,10 @@ def get_historicos_casos_confirmados():
 
 def get_dados_historicos_arquivo():
     historicos = []
-    for dados in os.listdir('./dados/'):
-        if dados.startswith('covid-19-br-2020') and dados.endswith('.json'):
+    dados_filesystem = os.listdir('./dados/')
+    dados_filesystem.sort()
+    for dados in dados_filesystem:
+        if dados.startswith('covid-19-br-2020'):
             f = open('./dados/' + dados, 'r')
             dados = json.loads(f.read())
             historicos.append(dados)
@@ -114,8 +123,8 @@ def get_index():
                            data_pior_dia=get_informacoes_pior_dia()[0],
                            casos_pior_dia=get_informacoes_pior_dia()[1],
                            obitos_brasil=get_obitos_brasil(),
-                           datas_grafico=list(get_dados_grafico().keys()),
-                           confirmados_grafico=list(get_dados_grafico().values()))
+                           datas_grafico=get_datas_para_grafico(),
+                           confirmados_grafico=get_confirmados_para_grafico())
 
 
 @app.route('/tudo')
@@ -165,7 +174,7 @@ def get_todos_historicos_brasil():
     historicos = []
     try:
         for dados in os.listdir('./dados/'):
-            if dados.startswith('covid-19-br-2020') and dados.endswith('.json'):
+            if dados.startswith('covid-19-br-'):
                 f = open('./dados/' + dados, 'r')
                 dados = json.loads(f.read())
                 historicos.append(dados['brasil'])
