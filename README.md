@@ -27,17 +27,3 @@ Todos os dados/números são obtidos através do [site](https://saude.gov.br/)/[
 
 24/03/2020
 - Do dia [21/03/2020](https://www.saude.gov.br/noticias/agencia-saude/46571-coronavirus-18-mortes-e-1-128-casos-confirmados) em diante, o Ministério da Saúde passou a informar os casos detalhadamente por região e com os números de infectados, porcentagem e consolidação por UF e região, por isso os datas históricas tem o seu início a partir deste dia.
-
-## Execução
-- Unix, Linux, Mac, etc.:
-````
-	$ pip install requirements.txt
-	$ export FLASK_APP=main.py
-	$ flask run
-````
-- Windows 
-````
-	> C:\Python\python.exe -m pip install requirements.txt
-	> set FLASK_APP=main.py
-	> flask run
-````
