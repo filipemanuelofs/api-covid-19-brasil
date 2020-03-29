@@ -2,7 +2,7 @@
 API para os casos de COVID-19 no Brasil e regiões.
 
 ## Endereço
-Temporariamente em: https://api-covid-19-brasil.herokuapp.com/
+Temporariamente em: https://api-covid-19-br--filipemanuel.repl.co/
 
 ## Endpoints
 | Requisição | Descrição | Exemplo |
