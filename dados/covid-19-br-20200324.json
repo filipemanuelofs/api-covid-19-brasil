@@ -5,228 +5,230 @@
         "porcentagem": "2,10%",
         "atualizado_em": "24/03/2020 17:32"
     },
-    "regioes": {
-        "atualizado_em": "24/03/2020 17:32",
-        "norte": {
-            "total": 82,
-            "porcentagem": "3,7%",
-            "resultados": [
-                {
-                    "id": 1,
-                    "uf": "AC",
-                    "confirmados": 17,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 2,
-                    "uf": "AM",
-                    "confirmados": 47,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 3,
-                    "uf": "AP",
-                    "confirmados": 1,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 4,
-                    "uf": "PA",
-                    "confirmados": 5,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 5,
-                    "uf": "RO",
-                    "confirmados": 3,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 6,
-                    "uf": "RR",
-                    "confirmados": 2,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 7,
-                    "uf": "TO",
-                    "confirmados": 7,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                }
-            ]
-        },
-        "nordeste": {
-            "total": 354,
-            "porcentagem": "16,1%",
-            "resultados": [
-                {
-                    "id": 8,
-                    "uf": "AL",
-                    "confirmados": 7,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 9,
-                    "uf": "BA",
-                    "confirmados": 76,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 10,
-                    "uf": "CE",
-                    "confirmados": 182,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 11,
-                    "uf": "MA",
-                    "confirmados": 8,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 12,
-                    "uf": "PB",
-                    "confirmados": 3,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 13,
-                    "uf": "PE",
-                    "confirmados": 42,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 14,
-                    "uf": "PI",
-                    "confirmados": 6,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 15,
-                    "uf": "RN",
-                    "confirmados": 13,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 16,
-                    "uf": "SE",
-                    "confirmados": 15,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                }
-            ]
-        },
-        "sudeste": {
-            "total": 1278,
-            "porcentagem": "58,1%",
-            "resultados": [
-                {
-                    "id": 17,
-                    "uf": "ES",
-                    "confirmados": 33,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 18,
-                    "uf": "MG",
-                    "confirmados": 130,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 19,
-                    "uf": "RJ",
-                    "confirmados": 305,
-                    "mortes": 3,
-                    "porcentagem": "1,60%"
-                },
-                {
-                    "id": 20,
-                    "uf": "SP",
-                    "confirmados": 810,
-                    "mortes": 22,
-                    "porcentagem": "3,50%"
-                }
-            ]
-        },
-        "centro-oeste": {
-            "total": 217,
-            "porcentagem": "9,8%",
-            "resultados": [
-                {
-                    "id": 21,
-                    "uf": "DF",
-                    "confirmados": 160,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 22,
-                    "uf": "GO",
-                    "confirmados": 27,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 23,
-                    "uf": "MS",
-                    "confirmados": 23,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 24,
-                    "uf": "MT",
-                    "confirmados": 7,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                }
-            ]
-        },
-        "sul": {
-            "total": 270,
-            "porcentagem": "12,3%",
-            "resultados": [
-                {
-                    "id": 25,
-                    "uf": "PR",
-                    "confirmados": 65,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 26,
-                    "uf": "SC",
-                    "confirmados": 107,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                },
-                {
-                    "id": 27,
-                    "uf": "RS",
-                    "confirmados": 98,
-                    "mortes": 0,
-                    "porcentagem": "0%"
-                }
-            ]
+    "regioes": [
+        {
+            "atualizado_em": "24/03/2020 17:32",
+            "norte": {
+                "total": 82,
+                "porcentagem": "3,7%",
+                "resultados": [
+                    {
+                        "id": 1,
+                        "uf": "AC",
+                        "confirmados": 17,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 2,
+                        "uf": "AM",
+                        "confirmados": 47,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 3,
+                        "uf": "AP",
+                        "confirmados": 1,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 4,
+                        "uf": "PA",
+                        "confirmados": 5,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 5,
+                        "uf": "RO",
+                        "confirmados": 3,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 6,
+                        "uf": "RR",
+                        "confirmados": 2,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 7,
+                        "uf": "TO",
+                        "confirmados": 7,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    }
+                ]
+            },
+            "nordeste": {
+                "total": 354,
+                "porcentagem": "16,1%",
+                "resultados": [
+                    {
+                        "id": 8,
+                        "uf": "AL",
+                        "confirmados": 7,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 9,
+                        "uf": "BA",
+                        "confirmados": 76,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 10,
+                        "uf": "CE",
+                        "confirmados": 182,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 11,
+                        "uf": "MA",
+                        "confirmados": 8,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 12,
+                        "uf": "PB",
+                        "confirmados": 3,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 13,
+                        "uf": "PE",
+                        "confirmados": 42,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 14,
+                        "uf": "PI",
+                        "confirmados": 6,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 15,
+                        "uf": "RN",
+                        "confirmados": 13,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 16,
+                        "uf": "SE",
+                        "confirmados": 15,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    }
+                ]
+            },
+            "sudeste": {
+                "total": 1278,
+                "porcentagem": "58,1%",
+                "resultados": [
+                    {
+                        "id": 17,
+                        "uf": "ES",
+                        "confirmados": 33,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 18,
+                        "uf": "MG",
+                        "confirmados": 130,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 19,
+                        "uf": "RJ",
+                        "confirmados": 305,
+                        "mortes": 3,
+                        "porcentagem": "1,60%"
+                    },
+                    {
+                        "id": 20,
+                        "uf": "SP",
+                        "confirmados": 810,
+                        "mortes": 22,
+                        "porcentagem": "3,50%"
+                    }
+                ]
+            },
+            "centro-oeste": {
+                "total": 217,
+                "porcentagem": "9,8%",
+                "resultados": [
+                    {
+                        "id": 21,
+                        "uf": "DF",
+                        "confirmados": 160,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 22,
+                        "uf": "GO",
+                        "confirmados": 27,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 23,
+                        "uf": "MS",
+                        "confirmados": 23,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 24,
+                        "uf": "MT",
+                        "confirmados": 7,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    }
+                ]
+            },
+            "sul": {
+                "total": 270,
+                "porcentagem": "12,3%",
+                "resultados": [
+                    {
+                        "id": 25,
+                        "uf": "PR",
+                        "confirmados": 65,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 26,
+                        "uf": "SC",
+                        "confirmados": 107,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    },
+                    {
+                        "id": 27,
+                        "uf": "RS",
+                        "confirmados": 98,
+                        "mortes": 0,
+                        "porcentagem": "0%"
+                    }
+                ]
+            }
         }
-    },
+    ],
     "fonte": [
         "https://www.saude.gov.br/noticias/agencia-saude/46593-coronavirus-46-mortes-e-2-201-casos-confirmados",
         "https://g1.globo.com/bemestar/coronavirus/noticia/2020/03/24/casos-de-coronavirus-no-brasil-em-24-de-marco.ghtml"
