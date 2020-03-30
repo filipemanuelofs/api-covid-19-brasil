@@ -85,12 +85,15 @@ def get_nome_arquivo_historico(data):
 
 
 def get_dados(dados='./dados/covid-19-br.json'):
+    f = None
     try:
         f = open(dados, 'r')
         return json.loads(f.read())
     except:
         raise Exception(
             'Não foi encontrado nenhum registro com os parâmetros solicitados')
+    finally:
+        f.close()
 
 
 def get_casos_confirmados():
@@ -193,6 +196,7 @@ def get_todos_historicos():
 @app.route('/historicos/brasil')
 def get_todos_historicos_brasil():
     historicos = []
+    f = None
     try:
         for dados in os.listdir('./dados/'):
             if dados.startswith('covid-19-br-'):
@@ -202,6 +206,8 @@ def get_todos_historicos_brasil():
         return jsonify(historicos)
     except Exception as e:
         return jsonify(erro=True, mensagem=str(e))
+    finally:
+        f.close()
 
 
 @app.route('/historicos/<data>')
