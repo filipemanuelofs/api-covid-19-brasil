@@ -22,19 +22,23 @@
 		<p class="texto-grande ">Pior dia até agora: <span class="numero-medio negrito">{{data_pior_dia}}</span> </p>
 		<span class="numero-grande negrito verde">{{casos_pior_dia}}</span>
 		<p class="">novos casos confirmados</p>
-		<p class="texto-grande ">Gráfico de casos confirmados</p>
-		<canvas id="canvas" width="600" height="400"></canvas>
+		<p class="texto-grande ">Casos confirmados no Brasil</p>
+		<canvas id="grafico-casos-confirmados" width="600" height="400"></canvas>
+		<p class="texto-grande ">Casos confirmados nos estados</p>
+		<canvas id="grafico-casos-confirmados-estados" width="600" height="400"></canvas>
 	</div>
 	<script>
-		var config = {
-			type: 'line',
-			data: {
-				labels: {{ datas_grafico | tojson}},
+		window.onload = function () {
+			var ctx_grafico_casos_confirmados = document.getElementById('grafico-casos-confirmados').getContext('2d');
+			window.myLine = new Chart(ctx_grafico_casos_confirmados, {
+				type: 'line',
+				data: {
+					labels: {{ datas_grafico_1 | tojson}},
 		datasets: [{
 			label: 'Casos confirmados',
 			backgroundColor: "#f1c40f",
-			borderColor: "#f39c12",
-			data: {{ confirmados_grafico | tojson}},
+			borderColor: "#003f5c",
+			data: {{ confirmados_grafico_1 | tojson}},
 			fill: false,
 				}]
 			},
@@ -44,7 +48,7 @@
 			tooltips: {
 				mode: 'index',
 					intersect: false,
-				},
+					},
 			hover: {
 				mode: 'nearest',
 					intersect: true
@@ -66,11 +70,28 @@
 					}]
 			}
 		}
-		};
-
-		window.onload = function () {
-			var ctx = document.getElementById('canvas').getContext('2d');
-			window.myLine = new Chart(ctx, config);
+		});
+		var ctx_grafico_casos_confirmados_estados = document.getElementById('grafico-casos-confirmados-estados').getContext('2d');
+		window.myBar = new Chart(ctx_grafico_casos_confirmados_estados, {
+			type: 'bar',
+			data: {
+				labels: {{ regioes_grafico_2 | tojson}},
+			datasets: [{
+				label: 'Casos confirmados',
+				backgroundColor: "#003f5c",
+				borderColor: "#003f5c",
+				data: {{ confirmados_grafico_2 | tojson}},
+			fill: true,
+					}]
+				},
+			options: {
+			responsive: true,
+			legend: {
+				position: 'top',
+			},
+			title: {}
+		}
+		})
 		};
 	</script>
 </body>

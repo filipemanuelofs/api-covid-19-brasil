@@ -1,18 +1,39 @@
 import os
 import json
-from datetime import datetime
 from flask import Flask, jsonify, render_template
+from util import formatar_data, validar_data
+
+
 app = Flask('app')
-
-
 NOMENCLATURA_PADRAO = 'covid-19-br.json'
 
 
-def formatar_data(data, padrao='%d/%m'):
-    return datetime.strptime(data, '%d/%m/%Y %H:%M').strftime(padrao)
+# -------------------------------------------------------------
+# Gráfico Casos confirmados nos estados
+
+def get_regioes_para_grafico_2():
+    historicos = get_dados()['regioes']
+    for historico in historicos:
+        return list(historico)[1:]
 
 
-def get_datas_para_grafico():
+def get_confirmados_para_grafico_2():
+    historicos = get_dados()['regioes']
+    confirmados = []
+    for historico in historicos:
+        confirmados.append(historico['norte']['total'])
+        confirmados.append(historico['nordeste']['total'])
+        confirmados.append(historico['sudeste']['total'])
+        confirmados.append(historico['centro-oeste']['total'])
+        confirmados.append(historico['sul']['total'])
+        break
+    return confirmados
+
+
+# -------------------------------------------------------------
+# Gráfico Casos confirmados no Brasil
+
+def get_datas_para_grafico_1():
     historicos = get_dados_historicos_arquivo()
     datas = []
     for historico in historicos:
@@ -20,12 +41,14 @@ def get_datas_para_grafico():
     return datas
 
 
-def get_confirmados_para_grafico():
+def get_confirmados_para_grafico_1():
     historicos = get_dados_historicos_arquivo()
     confirmados = []
     for historico in historicos:
         confirmados.append(historico['brasil']['confirmados'])
     return confirmados
+
+# -------------------------------------------------------------
 
 
 def get_historicos_datas():
@@ -54,13 +77,6 @@ def get_dados_historicos_arquivo():
             dados = json.loads(f.read())
             historicos.append(dados)
     return historicos
-
-
-def validar_data(data):
-    try:
-        return datetime.strptime(data, '%Y%m%d')
-    except ValueError:
-        raise ValueError('Formato da data incorreto, deve ser YYYYMMDD.')
 
 
 def get_nome_arquivo_historico(data):
@@ -113,6 +129,9 @@ def get_casos_pior_dia():
 def get_obitos_brasil():
     return get_dados()['brasil']['mortes']
 
+# API
+# -------------------------------------------------------------
+
 
 @app.route('/')
 def get_index():
@@ -123,8 +142,10 @@ def get_index():
                            data_pior_dia=get_informacoes_pior_dia()[0],
                            casos_pior_dia=get_informacoes_pior_dia()[1],
                            obitos_brasil=get_obitos_brasil(),
-                           datas_grafico=get_datas_para_grafico(),
-                           confirmados_grafico=get_confirmados_para_grafico())
+                           datas_grafico_1=get_datas_para_grafico_1(),
+                           confirmados_grafico_1=get_confirmados_para_grafico_1(),
+                           regioes_grafico_2=get_regioes_para_grafico_2(),
+                           confirmados_grafico_2=get_confirmados_para_grafico_2())
 
 
 @app.route('/tudo')
