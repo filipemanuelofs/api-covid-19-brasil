@@ -1,7 +1,7 @@
 import os
 import json
 from flask import Flask, jsonify, render_template
-from util import formatar_data, validar_data
+from util import formatar_data, validar_data, formatar_numeral
 
 
 app = Flask('app')
@@ -112,13 +112,15 @@ def get_informacoes_pior_dia():
     historicos.reverse()
     num_confirmados = 0
     num_confirmados_aux = 0
+    data = None
     for index, historico in enumerate(historicos):
         num_confirmados = int(int(
             historico['brasil']['confirmados']) - int(historicos[index+1]['brasil']['confirmados']))
         if num_confirmados > num_confirmados_aux:
             num_confirmados_aux = num_confirmados
+            data = historico['brasil']['atualizado_em']
         else:
-            return formatar_data(historicos[index-2]['brasil']['atualizado_em']), num_confirmados_aux
+            return formatar_data(data), num_confirmados_aux
 
 
 def get_pior_dia():
@@ -139,12 +141,14 @@ def get_obitos_brasil():
 @app.route('/')
 def get_index():
     return render_template('index.html',
-                           confirmados_brasil=get_casos_confirmados(),
+                           confirmados_brasil=formatar_numeral(
+                               get_casos_confirmados()),
                            primeiro_caso_confirmado=get_primeiro_caso_confirmado(),
                            pior_dia=get_pior_dia(),
                            data_pior_dia=get_informacoes_pior_dia()[0],
-                           casos_pior_dia=get_informacoes_pior_dia()[1],
-                           obitos_brasil=get_obitos_brasil(),
+                           casos_pior_dia=formatar_numeral(
+                               get_informacoes_pior_dia()[1]),
+                           obitos_brasil=formatar_numeral(get_obitos_brasil()),
                            datas_grafico_1=get_datas_para_grafico_1(),
                            confirmados_grafico_1=get_confirmados_para_grafico_1(),
                            regioes_grafico_2=get_regioes_para_grafico_2(),
@@ -272,5 +276,5 @@ def get_por_historico_estados(data):
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 8080))
     app.run(host='0.0.0.0', port=port)

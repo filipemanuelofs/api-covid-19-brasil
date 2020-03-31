@@ -6,26 +6,48 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Coronavírus no Brasil</title>
 	<script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 	<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
 	<div id="container">
 		<h1>Números do coronavírus no Brasil</h1>
 		<hr />
-		<p class="texto-grande ">Casos confirmados no Brasil pelo Ministério da Saúde:</p>
-		<span class="numero-grande negrito azul">{{confirmados_brasil}}</span>
-		<p class="texto-grande ">Óbitos:</p>
-		<span class="numero-grande negrito vermelho">{{obitos_brasil}}</span>
-		<p class="texto-grande ">Primeiro caso confirmado:</p>
-		<span class="numero-grande negrito laranja">{{primeiro_caso_confirmado}}</span>
-		<p class="texto-grande ">Pior dia até agora: <span class="numero-medio negrito">{{data_pior_dia}}</span> </p>
-		<span class="numero-grande negrito verde">{{casos_pior_dia}}</span>
-		<p class="">novos casos confirmados</p>
-		<p class="texto-grande ">Casos confirmados no Brasil</p>
-		<canvas id="grafico-casos-confirmados" width="600" height="400"></canvas>
-		<p class="texto-grande ">Casos confirmados nos estados</p>
-		<canvas id="grafico-casos-confirmados-estados" width="600" height="400"></canvas>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-header">Casos confirmados no Brasil</h5>
+				<p class="card-text numero-grande negrito azul">{{confirmados_brasil}}</p>
+			</div>
+			<div class="card-body">
+				<h5 class="card-header">Óbitos</h5>
+				<p class="card-text numero-grande negrito vermelho">{{obitos_brasil}}</p>
+			</div>
+			<div class="card-body">
+				<h5 class="card-header">Primeiro caso confirmado</h5>
+				<p class="card-text numero-grande negrito laranja">{{primeiro_caso_confirmado}}</p>
+			</div>
+			<div class="card-body">
+				<h5 class="card-header">Pior dia até agora</h5>
+				<p class="numero-medio negrito">{{data_pior_dia}}</p>
+				<p class="card-text">com</p>
+				<p class="card-text numero-grande negrito verde">{{casos_pior_dia}}</p>
+				<p class="card-text">novos casos confirmados</p>
+			</div>
+			<div class="card-body">
+				<h5 class="card-header">Casos confirmados no Brasil</h5>
+				<canvas id="grafico-casos-confirmados" width="600" height="400"></canvas>
+			</div>
+			<div class="card-body">
+				<h5 class="card-header">Casos confirmados nos estados</h5>
+				<canvas id="grafico-casos-confirmados-estados" width="600" height="400"></canvas>
+			</div>
+			<div class="card-footer text-muted">
+				Código fonte: <a href="https://github.com/filipemanuelofs/api-covid-19-brasil/"
+					class="badge badge-dark">Github</a>
+			</div>
+		</div>
 	</div>
 	<script>
 		window.onload = function () {
@@ -40,15 +62,15 @@
 			borderColor: "#003f5c",
 			data: {{ confirmados_grafico_1 | tojson}},
 			fill: false,
-				}]
-			},
+                    }]
+                },
 		options: {
 			responsive: false,
 				title: { },
 			tooltips: {
 				mode: 'index',
 					intersect: false,
-					},
+                    },
 			hover: {
 				mode: 'nearest',
 					intersect: true
@@ -70,7 +92,7 @@
 					}]
 			}
 		}
-		});
+            });
 		var ctx_grafico_casos_confirmados_estados = document.getElementById('grafico-casos-confirmados-estados').getContext('2d');
 		window.myBar = new Chart(ctx_grafico_casos_confirmados_estados, {
 			type: 'bar',
@@ -82,8 +104,8 @@
 				borderColor: "#003f5c",
 				data: {{ confirmados_grafico_2 | tojson}},
 			fill: true,
-					}]
-				},
+                    }]
+                },
 			options: {
 			responsive: true,
 			legend: {
@@ -91,8 +113,8 @@
 			},
 			title: {}
 		}
-		})
-		};
+        })
+	    };
 	</script>
 </body>
 
