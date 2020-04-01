@@ -41,8 +41,8 @@
 				<canvas id="grafico-casos-confirmados" width="600" height="400"></canvas>
 			</div>
 			<div class="card-body">
-				<h5 class="card-header cor-card-titulo">Casos confirmados nos estados</h5>
-				<canvas id="grafico-casos-confirmados-estados" width="600" height="400"></canvas>
+				<h5 class="card-header cor-card-titulo">Casos confirmados nas regiões</h5>
+				<canvas id="grafico-casos-confirmados-regioes" width="600" height="400"></canvas>
 			</div>
 			<div class="card-footer text-muted">
 				Código fonte: <a href="https://github.com/filipemanuelofs/api-covid-19-brasil/"
@@ -94,9 +94,9 @@
 			}
 		}
             });
-		var ctx_grafico_casos_confirmados_estados = document.getElementById('grafico-casos-confirmados-estados').getContext('2d');
+		var ctx_grafico_casos_confirmados_regioes = document.getElementById('grafico-casos-confirmados-regioes').getContext('2d');
 		var label_estados = {{ regioes_grafico_2 | tojson}};
-		window.myBar = new Chart(ctx_grafico_casos_confirmados_estados, {
+		window.myBar = new Chart(ctx_grafico_casos_confirmados_regioes, {
 			type: 'bar',
 			data: {
 				labels: {{ regioes_grafico_2 | tojson}},
