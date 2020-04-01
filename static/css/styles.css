@@ -4,15 +4,10 @@ body {
     justify-content: center;
   }
   
-  #container {
-      font-family: 'Open Sans', sans-serif !important;
-      font-weight: 400;
-      text-align: center;
-  }
-  
   .titulo-principal {
       margin-bottom: 30px;
       margin-top: 20px;
+      text-align: center;
   }
   
   .negrito {

@@ -12,9 +12,10 @@
 </head>
 
 <body style="background-color: #f5f6fa;">
-	<div id="container">
+	<div class="container">
 		<h1 class="titulo-principal">Números do coronavírus no Brasil</h1>
 		<!-- hr class="linha" / -->
+		<div class="d-flex justify-content-center">
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-header cor-card-titulo">Casos confirmados no Brasil</h5>
@@ -51,6 +52,7 @@
 			<div class="card-footer text-muted">
 				Código fonte: <a href="https://github.com/filipemanuelofs/api-covid-19-brasil/" class="badge badge-dark">Github</a>
 			</div>
+			</div>
 		</div>
 	</div>
 	<script>
@@ -69,7 +71,7 @@
 					}]
 				},
 				options: {
-					responsive: false,
+					responsive: true,
 					title: {},
 					tooltips: {
 						mode: 'index',
