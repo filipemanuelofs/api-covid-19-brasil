@@ -1,5 +1,5 @@
 body {
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,7 +10,7 @@ body {
   }
   
   .negrito {
-      font-weight: bold;
+      font-weight: 700;
   }
   
   .numero-grande {
@@ -26,29 +26,14 @@ body {
   }
   
   .texto-medio {
-      font-size: x
+      font-size: x-large;
   }
   
-  .azul {
-      color: #2980b9;
+  .cor-numero {
+      color: #6C7A89;
   }
   
-  .verde {
-      color: #27ae60;
+  .cor-card-titulo {
+      color: #466163;
   }
   
-  .vermelho {
-      color: #c0392b;
-  }
-  
-  .laranja {
-      color: #f39c12;
-  }
-  
-  .cinza {
-      color: #34495e;
-  }
-  
-  .branco {
-      color: #ecf0f1;
-  }
