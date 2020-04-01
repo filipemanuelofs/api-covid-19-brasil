@@ -7,15 +7,14 @@
 	<title>Coronavírus no Brasil</title>
 	<script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
 	<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type="text/css" />
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap.min.css" rel="stylesheet"
-		type="text/css" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-color: #f5f6fa;">
 	<div id="container">
-		<h1>Números do coronavírus no Brasil</h1>
-		<hr />
+		<h1 class="titulo-principal">Números do coronavírus no Brasil</h1>
+		<!-- hr class="linha" / -->
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-header cor-card-titulo">Casos confirmados no Brasil</h5>
@@ -44,37 +43,41 @@
 				<h5 class="card-header cor-card-titulo">Casos confirmados nas regiões</h5>
 				<canvas id="grafico-casos-confirmados-regioes" width="600" height="400"></canvas>
 			</div>
+			<!--div class="card-body">
+				<h5 class="card-header cor-card-titulo">Casos confirmados nos estados</h5>
+				<p class="card-text texto-medio">Norte</p>
+				<canvas id="grafico-casos-confirmados-regioes2" width="286" height="209"></canvas>
+			</div-->
 			<div class="card-footer text-muted">
-				Código fonte: <a href="https://github.com/filipemanuelofs/api-covid-19-brasil/"
-					class="badge badge-dark">Github</a>
+				Código fonte: <a href="https://github.com/filipemanuelofs/api-covid-19-brasil/" class="badge badge-dark">Github</a>
 			</div>
 		</div>
 	</div>
 	<script>
-		window.onload = function () {
+		window.onload = function() {
 			var ctx_grafico_casos_confirmados = document.getElementById('grafico-casos-confirmados').getContext('2d');
 			window.myLine = new Chart(ctx_grafico_casos_confirmados, {
 				type: 'line',
 				data: {
-					labels: {{ datas_grafico_1 | tojson}},
+					labels: {{datas_grafico_1 | tojson}},
 					datasets: [{
-							label: 'Casos confirmados',
-							backgroundColor: "rgb(201,55,86,0.7)",
-							borderColor: "rgb(201,55,86,0.5)",
-							data: {{ confirmados_grafico_1 | tojson}},
-							fill: true,
-						}]
+						label: 'Casos confirmados',
+						backgroundColor: "rgb(201,55,86,0.7)",
+						borderColor: "rgb(201,55,86,0.5)",
+						data: {{confirmados_grafico_1 | tojson}},
+						fill: true,
+					}]
 				},
 				options: {
 					responsive: false,
-						title: { },
+					title: {},
 					tooltips: {
 						mode: 'index',
-							intersect: false,
-							},
+						intersect: false,
+					},
 					hover: {
 						mode: 'nearest',
-							intersect: true
+						intersect: true
 					},
 					scales: {
 						xAxes: [{
@@ -84,36 +87,37 @@
 								labelString: 'Período'
 							}
 						}],
-							yAxes: [{
+						yAxes: [{
+							display: true,
+							scaleLabel: {
 								display: true,
-								scaleLabel: {
-									display: true,
-									labelString: 'Casos confirmados'
-								}
-							}]
+								labelString: 'Casos confirmados'
+							}
+						}]
 					}
 				}
 			});
 			var ctx_grafico_casos_confirmados_regioes = document.getElementById('grafico-casos-confirmados-regioes').getContext('2d');
-			var label_estados = {{ regioes_grafico_2 | tojson}};
+			var label_estados = {{regioes_grafico_2 | tojson}};
 			window.myBar = new Chart(ctx_grafico_casos_confirmados_regioes, {
-				type: 'bar',
-				data: {
-					labels: {{ regioes_grafico_2 | tojson}},
-					datasets: [{
-						label: 'Casos confirmados',
-						backgroundColor: ["#8d608c", "#7e567e", "#704c70", "#624362", "#543954"],
-						borderColor: [],
-						data: {{ confirmados_grafico_2 | tojson}},
-						fill: true,
+					type: 'bar',
+					data: {
+						labels: {{regioes_grafico_2 | tojson}},
+						datasets: [{
+							label: 'Casos confirmados',
+							backgroundColor: ["#8d608c","#7e567e","#704c70","#624362","#543954"],
+							borderColor: [],
+							data: {{confirmados_grafico_2 | tojson}},
+							fill: true,
 						}]
 					},
-				options: {
-				responsive: true,
-				legend: {
-					position: 'top',
-				}
-			}
+					options: {
+						responsive: true,
+						legend: {
+							position: 'top',
+						},
+						title: {}
+					}
 			});
 		};
 	</script>

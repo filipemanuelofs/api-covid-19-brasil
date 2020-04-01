@@ -10,6 +10,11 @@ body {
       text-align: center;
   }
   
+  .titulo-principal {
+      margin-bottom: 30px;
+      margin-top: 20px;
+  }
+  
   .negrito {
       font-weight: 700;
   }
