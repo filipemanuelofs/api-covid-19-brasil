@@ -6,9 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Coronavírus no Brasil</title>
 	<script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 	<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap.min.css" rel="stylesheet"
+		type="text/css" />
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -17,23 +18,23 @@
 		<hr />
 		<div class="card">
 			<div class="card-body">
-				<h5 class="card-header">Casos confirmados no Brasil</h5>
-				<p class="card-text numero-grande negrito azul">{{confirmados_brasil}}</p>
+				<h5 class="card-header cor-card-titulo">Casos confirmados no Brasil</h5>
+				<p class="card-text numero-grande negrito cor-numero">{{confirmados_brasil}}</p>
 			</div>
 			<div class="card-body">
-				<h5 class="card-header">Óbitos</h5>
-				<p class="card-text numero-grande negrito vermelho">{{obitos_brasil}}</p>
+				<h5 class="card-header cor-card-titulo">Óbitos</h5>
+				<p class="card-text numero-grande negrito cor-numero">{{obitos_brasil}}</p>
 			</div>
 			<div class="card-body">
-				<h5 class="card-header">Primeiro caso confirmado</h5>
-				<p class="card-text numero-grande negrito laranja">{{primeiro_caso_confirmado}}</p>
+				<h5 class="card-header cor-card-titulo">Primeiro caso confirmado</h5>
+				<p class="card-text numero-grande negrito cor-numero">{{primeiro_caso_confirmado}}</p>
 			</div>
 			<div class="card-body">
-				<h5 class="card-header">Pior dia até agora</h5>
+				<h5 class="card-header cor-card-titulo">Pior dia até agora</h5>
 				<p class="numero-medio negrito">{{data_pior_dia}}</p>
-				<p class="card-text">com</p>
-				<p class="card-text numero-grande negrito verde">{{casos_pior_dia}}</p>
-				<p class="card-text">novos casos confirmados</p>
+				<p class="card-text texto-medio">com</p>
+				<p class="card-text numero-grande negrito cor-numero">{{casos_pior_dia}}</p>
+				<p class="card-text texto-medio">novos casos confirmados</p>
 			</div>
 			<div class="card-body">
 				<h5 class="card-header">Casos confirmados no Brasil</h5>
@@ -58,10 +59,10 @@
 					labels: {{ datas_grafico_1 | tojson}},
 		datasets: [{
 			label: 'Casos confirmados',
-			backgroundColor: "#f1c40f",
-			borderColor: "#003f5c",
+			backgroundColor: "rgb(201,55,86,0.7)",
+			borderColor: "rgb(201,55,86,0.5)",
 			data: {{ confirmados_grafico_1 | tojson}},
-			fill: false,
+			fill: true,
                     }]
                 },
 		options: {
@@ -94,14 +95,15 @@
 		}
             });
 		var ctx_grafico_casos_confirmados_estados = document.getElementById('grafico-casos-confirmados-estados').getContext('2d');
+		var label_estados = {{ regioes_grafico_2 | tojson}};
 		window.myBar = new Chart(ctx_grafico_casos_confirmados_estados, {
 			type: 'bar',
 			data: {
 				labels: {{ regioes_grafico_2 | tojson}},
 			datasets: [{
 				label: 'Casos confirmados',
-				backgroundColor: "#003f5c",
-				borderColor: "#003f5c",
+				backgroundColor: ["#8d608c", "#7e567e", "#704c70", "#624362", "#543954"],
+				borderColor: [],
 				data: {{ confirmados_grafico_2 | tojson}},
 			fill: true,
                     }]
