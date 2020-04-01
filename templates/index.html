@@ -57,66 +57,65 @@
 				type: 'line',
 				data: {
 					labels: {{ datas_grafico_1 | tojson}},
-		datasets: [{
-			label: 'Casos confirmados',
-			backgroundColor: "rgb(201,55,86,0.7)",
-			borderColor: "rgb(201,55,86,0.5)",
-			data: {{ confirmados_grafico_1 | tojson}},
-			fill: true,
-                    }]
-                },
-		options: {
-			responsive: false,
-				title: { },
-			tooltips: {
-				mode: 'index',
-					intersect: false,
-                    },
-			hover: {
-				mode: 'nearest',
-					intersect: true
-			},
-			scales: {
-				xAxes: [{
-					display: true,
-					scaleLabel: {
-						display: true,
-						labelString: 'Período'
-					}
-				}],
-					yAxes: [{
-						display: true,
-						scaleLabel: {
+					datasets: [{
+							label: 'Casos confirmados',
+							backgroundColor: "rgb(201,55,86,0.7)",
+							borderColor: "rgb(201,55,86,0.5)",
+							data: {{ confirmados_grafico_1 | tojson}},
+							fill: true,
+						}]
+				},
+				options: {
+					responsive: false,
+						title: { },
+					tooltips: {
+						mode: 'index',
+							intersect: false,
+							},
+					hover: {
+						mode: 'nearest',
+							intersect: true
+					},
+					scales: {
+						xAxes: [{
 							display: true,
-							labelString: 'Casos confirmados'
-						}
-					}]
+							scaleLabel: {
+								display: true,
+								labelString: 'Período'
+							}
+						}],
+							yAxes: [{
+								display: true,
+								scaleLabel: {
+									display: true,
+									labelString: 'Casos confirmados'
+								}
+							}]
+					}
+				}
+			});
+			var ctx_grafico_casos_confirmados_regioes = document.getElementById('grafico-casos-confirmados-regioes').getContext('2d');
+			var label_estados = {{ regioes_grafico_2 | tojson}};
+			window.myBar = new Chart(ctx_grafico_casos_confirmados_regioes, {
+				type: 'bar',
+				data: {
+					labels: {{ regioes_grafico_2 | tojson}},
+					datasets: [{
+						label: 'Casos confirmados',
+						backgroundColor: ["#8d608c", "#7e567e", "#704c70", "#624362", "#543954"],
+						borderColor: [],
+						data: {{ confirmados_grafico_2 | tojson}},
+						fill: true,
+						}]
+					},
+				options: {
+				responsive: true,
+				legend: {
+					position: 'top',
+				}
 			}
-		}
-            });
-		var ctx_grafico_casos_confirmados_regioes = document.getElementById('grafico-casos-confirmados-regioes').getContext('2d');
-		var label_estados = {{ regioes_grafico_2 | tojson}};
-		window.myBar = new Chart(ctx_grafico_casos_confirmados_regioes, {
-			type: 'bar',
-			data: {
-				labels: {{ regioes_grafico_2 | tojson}},
-			datasets: [{
-				label: 'Casos confirmados',
-				backgroundColor: ["#8d608c", "#7e567e", "#704c70", "#624362", "#543954"],
-				borderColor: [],
-				data: {{ confirmados_grafico_2 | tojson}},
-			fill: true,
-                    }]
-                },
-			options: {
-			responsive: true,
-			legend: {
-				position: 'top',
-			},
-			title: {}
-		}
-        })
-	    };
+			});
+		};
 	</script>
 </body>
 

@@ -1,11 +1,12 @@
 body {
-    font-family: 'Open Sans', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   
   #container {
+      font-family: 'Open Sans', sans-serif !important;
+      font-weight: 400;
       text-align: center;
   }
   
