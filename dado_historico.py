@@ -54,14 +54,22 @@ class DadoHistorico:
             confirmados.append(historico['brasil']['confirmados'])
         return confirmados
 
+    def get_obitos(self):
+        '''
+        Retorna uma lista de números de óbitos desde o primeiro caso.
+        '''
+        obitos = []
+        for historico in self.dados:
+            obitos.append(historico['brasil']['mortes'])
+        return obitos
+
     def __get_informacoes_pior_dia(self):
         '''
         Retorna uma tupla contendo a data, no formato dd/MM, do pior dia e a quantidade de confirmados neste dia.
         '''
-        historicos = self.__get_dados()
-        # Chamando a função __get_dados() ao invés
-        # do self.dados por conta do .reverse() que modifica o estado da lista
-        historicos.reverse()
+        historicos = self.__get_dados(
+        )  # Chamando a função __get_dados() ao invés
+        historicos.reverse()  # do self.dados por conta do .reverse()
         num_confirmados = 0
         num_confirmados_aux = 0
         data = None
@@ -85,3 +93,13 @@ class DadoHistorico:
         Retorna a quantidade de casos confirmados do pior dia, que é calculada considerando a diferença entre o valor de confirmados do dia atual e do dia anterior.
         '''
         return formatar_numeral(self.__get_informacoes_pior_dia()[1])
+
+    def get_casos_confirmados_uf(self, regiao, uf):
+        confirmados = {}
+        for historico in self.dados:
+            for r in historico['regioes']:
+                for x in r[regiao]['resultados']:
+                    if x['uf'] == uf:
+                        confirmados[formatar_data(
+                            r['atualizado_em'])] = x['confirmados']
+        return confirmados

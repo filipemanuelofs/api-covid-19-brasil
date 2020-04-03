@@ -1,29 +1,8 @@
 # API COVID-19 Brasil
-API para os casos de COVID-19 no Brasil e regiões.
+Site com os números do coronavírus no Brasil e regiões.
 
 ## Endereço
-Temporariamente em: https://api-covid-19-brasil.herokuapp.com/
-
-## Endpoints
-| Requisição | Descrição | Exemplo |
-|--|--|--|
-| / | retorna os dados gerais de todas as regiões e do Brasil | -- |
-| /brasil | retorna os dados gerais do Brasil | -- |
-| /regioes | retorna os dados de todas as regiões do Brasil | -- |
-| /regioes/**{regiao}** | retorna os dados da região, onde **{regiao}** => "norte", "nordeste", "sudeste", "centro-oeste" ou "sul" | /regioes/nordeste
-| /historicos/**{data}** | retorna os dados históricos gerais de uma determinada data, onde **{data}** => formato YYYYMMDD | /historicos/20200321 |
-| /historicos/**{data}**/brasil | retorna os dados históricos gerais do Brasil | /historicos/20200321/brasil |
-| /historicos/**{data}**/regioes | retorna os dados históricos gerais das regiões | /historicos/20200321/regioes |
-| /historicos/**{dataInicio}**/**{dataFim}**/brasil | retorna a comparação dos dados da data inicial e final | /historicos/20200321/20200323/brasil |
+https://api-covid-19-brasil.herokuapp.com/
 
 ## Fonte
-Todos os dados/números são obtidos através do [site](https://saude.gov.br/)/[Twitter](https://twitter.com/minsaude) do Ministério da Saúde e pelo editoral do [G1 Coronavírus](https://g1.globo.com/bemestar/coronavirus).
-
-26/03/2020
-- Não foram encontrados os números específicos de infectados por estados para o dia 20/03/2020, apenas os números totais do Brasil, e algumas regiões como SP, RJ e MG.
-
-25/03/2020
-- Atualização: Dados retroativos estão sendo adicionados até a data corrente.
-
-24/03/2020
-- Do dia [21/03/2020](https://www.saude.gov.br/noticias/agencia-saude/46571-coronavirus-18-mortes-e-1-128-casos-confirmados) em diante, o Ministério da Saúde passou a informar os casos detalhadamente por região e com os números de infectados, porcentagem e consolidação por UF e região, por isso os datas históricas tem o seu início a partir deste dia.
+A motivação deste projeto se dá pelo estudo das tecnologias e não tem qualquer pretenção de ser fonte oficial de informação. Entretanto, todos os dados são coletados de fontes confiáveis como [site](https://saude.gov.br/)/[Twitter](https://twitter.com/minsaude) do Ministério da Saúde e pelo editoral do [G1 Coronavírus](https://g1.globo.com/bemestar/coronavirus).

@@ -6,9 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Coronavírus no Brasil</title>
 	<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type="text/css" />
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap.min.css" rel="stylesheet" type="text/css"
+	/>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
 </head>
 
 <body style="background-color: #f5f6fa;">
@@ -16,112 +16,707 @@
 		<h1 class="titulo-principal">Números do coronavírus no Brasil</h1>
 		<!-- hr class="linha" / -->
 		<div class="d-flex justify-content-center">
-		<div class="card text-center">
-			<div class="card-body">
-				<h5 class="card-header cor-card-titulo">Casos confirmados no Brasil</h5>
-				<p class="card-text numero-grande negrito cor-numero">{{confirmados_brasil}}</p>
-			</div>
-			<div class="card-body">
-				<h5 class="card-header cor-card-titulo">Óbitos</h5>
-				<p class="card-text numero-grande negrito cor-numero">{{obitos_brasil}}</p>
-			</div>
-			<div class="card-body">
-				<h5 class="card-header cor-card-titulo">Primeiro caso confirmado</h5>
-				<p class="card-text numero-grande negrito cor-numero">{{primeiro_caso_confirmado}}</p>
-			</div>
-			<div class="card-body">
-				<h5 class="card-header cor-card-titulo">Pior dia até agora</h5>
-				<p class="numero-medio negrito">{{data_pior_dia}}</p>
-				<p class="card-text texto-medio">com</p>
-				<p class="card-text numero-grande negrito cor-numero">{{casos_pior_dia}}</p>
-				<p class="card-text texto-medio">novos casos confirmados</p>
-			</div>
-			<div class="card-body">
-				<h5 class="card-header cor-card-titulo">Casos confirmados no Brasil</h5>
-				<canvas id="grafico-casos-confirmados" width="600" height="400"></canvas>
-			</div>
-			<div class="card-body">
-				<h5 class="card-header cor-card-titulo">Casos confirmados nas regiões</h5>
-				<canvas id="grafico-casos-confirmados-regioes" width="600" height="400"></canvas>
-			</div>
-			<!--div class="card-body">
-				<h5 class="card-header cor-card-titulo">Casos confirmados nos estados</h5>
-				<p class="card-text texto-medio">Norte</p>
-				<canvas id="grafico-casos-confirmados-regioes2" width="286" height="209"></canvas>
-			</div-->
-			<div class="card-footer text-muted">
-				Código fonte: <a href="https://github.com/filipemanuelofs/api-covid-19-brasil/" class="badge badge-dark">Github</a>
-			</div>
+			<div class="card text-center">
+				<div class="card-body">
+					<h5 class="card-header cor-card-titulo">Casos confirmados no Brasil</h5>
+					<p class="card-text numero-grande negrito cor-numero">{{confirmados_brasil}}</p>
+				</div>
+				<div class="card-body">
+					<h5 class="card-header cor-card-titulo">Óbitos</h5>
+					<p class="card-text numero-grande negrito cor-numero">{{obitos_brasil}}</p>
+				</div>
+				<div class="card-body">
+					<h5 class="card-header cor-card-titulo">Primeiro caso confirmado</h5>
+					<p class="card-text numero-grande negrito cor-numero">{{primeiro_caso_confirmado}}</p>
+				</div>
+				<div class="card-body">
+					<h5 class="card-header cor-card-titulo">Pior dia até agora</h5>
+					<p class="numero-medio negrito">{{data_pior_dia}}</p>
+					<p class="card-text texto-medio">com</p>
+					<p class="card-text numero-grande negrito cor-numero">{{casos_pior_dia}}</p>
+					<p class="card-text texto-medio">novos casos confirmados</p>
+				</div>
+				<div class="card-body">
+					<h5 class="card-header cor-card-titulo">Casos acumulados no Brasil</h5>
+					<canvas id="grafico-casos-confirmados" width="600" height="400"></canvas>
+				</div>
+				<div class="card-body">
+					<h5 class="card-header cor-card-titulo">Casos acumulados nas regiões</h5>
+					<canvas id="grafico-casos-confirmados-regioes" width="600" height="400"></canvas>
+				</div>
+				<div class="card-body">
+					<h5 class="card-header cor-card-titulo">Casos confirmados nos estados</h5>
+					<p class="card-text texto-medio negrito">Norte</p>
+					<div class="row">
+						<div class="col-sm-6">
+							<h5 class="card-title">Acre</h5>
+							<canvas id="grafico-casos-confirmados-regiao-norte-ac"></canvas>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="card-title">Amazonas</h5>
+							<canvas id="grafico-casos-confirmados-regiao-norte-am"></canvas>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<h5 class="card-title">Pará</h5>
+							<canvas id="grafico-casos-confirmados-regiao-norte-pa"></canvas>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="card-title">Rondônia</h5>
+							<canvas id="grafico-casos-confirmados-regiao-norte-ro"></canvas>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<h5 class="card-title">Roraima</h5>
+							<canvas id="grafico-casos-confirmados-regiao-norte-rr"></canvas>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="card-title">Tocantins</h5>
+							<canvas id="grafico-casos-confirmados-regiao-norte-to"></canvas>
+						</div>
+					</div>
+					<p class="card-text texto-medio negrito">Nordeste</p>
+					<div class="row">
+						<div class="col-sm-6">
+							<h5 class="card-title">Alagoas</h5>
+							<canvas id="grafico-casos-confirmados-regiao-nordeste-al"></canvas>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="card-title">Bahia</h5>
+							<canvas id="grafico-casos-confirmados-regiao-nordeste-ba"></canvas>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<h5 class="card-title">Ceará</h5>
+							<canvas id="grafico-casos-confirmados-regiao-nordeste-ce"></canvas>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="card-title">Maranhão</h5>
+							<canvas id="grafico-casos-confirmados-regiao-nordeste-ma"></canvas>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<h5 class="card-title">Paraíba</h5>
+							<canvas id="grafico-casos-confirmados-regiao-nordeste-pb"></canvas>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="card-title">Pernambuco</h5>
+							<canvas id="grafico-casos-confirmados-regiao-nordeste-pe"></canvas>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<h5 class="card-title">Piauí</h5>
+							<canvas id="grafico-casos-confirmados-regiao-nordeste-pi"></canvas>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="card-title">Rio Grande do Norte</h5>
+							<canvas id="grafico-casos-confirmados-regiao-nordeste-rn"></canvas>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<h5 class="card-title">Sergipe</h5>
+							<canvas id="grafico-casos-confirmados-regiao-nordeste-se"></canvas>
+						</div>
+					</div>
+					<p class="card-text texto-medio negrito">Sudeste</p>
+					<div class="row">
+						<div class="col-sm-6">
+							<h5 class="card-title">Espírito Santo</h5>
+							<canvas id="grafico-casos-confirmados-regiao-sudeste-es"></canvas>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="card-title">Minas Gerais</h5>
+							<canvas id="grafico-casos-confirmados-regiao-sudeste-mg"></canvas>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<h5 class="card-title">Rio de Janeiro</h5>
+							<canvas id="grafico-casos-confirmados-regiao-sudeste-rj"></canvas>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="card-title">São Paulo</h5>
+							<canvas id="grafico-casos-confirmados-regiao-sudeste-sp"></canvas>
+						</div>
+					</div>
+                    <p class="card-text texto-medio negrito">Centro-Oeste</p>
+					<div class="row">
+						<div class="col-sm-6">
+							<h5 class="card-title">Distrito Federal</h5>
+							<canvas id="grafico-casos-confirmados-regiao-centro-oeste-df"></canvas>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="card-title">Goiás</h5>
+							<canvas id="grafico-casos-confirmados-regiao-centro-oeste-go"></canvas>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<h5 class="card-title">Mato Grosso do Sul</h5>
+							<canvas id="grafico-casos-confirmados-regiao-centro-oeste-ms"></canvas>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="card-title">Mato Grosso</h5>
+							<canvas id="grafico-casos-confirmados-regiao-centro-oeste-mt"></canvas>
+						</div>
+					</div>
+                    <p class="card-text texto-medio negrito">Sul</p>
+					<div class="row">
+						<div class="col-sm-6">
+							<h5 class="card-title">Paraná</h5>
+							<canvas id="grafico-casos-confirmados-regiao-sul-pr"></canvas>
+						</div>
+						<div class="col-sm-6">
+							<h5 class="card-title">Santa Catarina</h5>
+							<canvas id="grafico-casos-confirmados-regiao-sul-sc"></canvas>
+						</div>
+					</div>
+                    <div class="row">
+						<div class="col-sm-6">
+							<h5 class="card-title">Rio Grande do Sul</h5>
+							<canvas id="grafico-casos-confirmados-regiao-sul-rs"></canvas>
+						</div>
+                    </div>
+				</div>
+
+				<div class="card-footer text-muted">
+					Código fonte: <a href="https://github.com/filipemanuelofs/api-covid-19-brasil/" class="badge badge-dark">Github</a>
+				</div>
 			</div>
 		</div>
 	</div>
 	<script>
 		window.onload = function() {
-			var ctx_grafico_casos_confirmados = document.getElementById('grafico-casos-confirmados').getContext('2d');
-			window.myLine = new Chart(ctx_grafico_casos_confirmados, {
-				type: 'line',
-				data: {
-					labels: {{datas_grafico_1 | tojson}},
-					datasets: [{
-						label: 'Casos confirmados',
-						backgroundColor: "rgb(201,55,86,0.7)",
-						borderColor: "rgb(201,55,86,0.5)",
-						data: {{confirmados_grafico_1 | tojson}},
-						fill: true,
-					}]
-				},
-				options: {
-					responsive: true,
-					title: {},
-					tooltips: {
-						mode: 'index',
-						intersect: false,
-					},
-					hover: {
-						mode: 'nearest',
-						intersect: true
-					},
-					scales: {
-						xAxes: [{
-							display: true,
-							scaleLabel: {
-								display: true,
-								labelString: 'Período'
-							}
-						}],
-						yAxes: [{
-							display: true,
-							scaleLabel: {
-								display: true,
-								labelString: 'Casos confirmados'
-							}
-						}]
-					}
-				}
-			});
-			var ctx_grafico_casos_confirmados_regioes = document.getElementById('grafico-casos-confirmados-regioes').getContext('2d');
-			var label_estados = {{regioes_grafico_2 | tojson}};
-			window.myBar = new Chart(ctx_grafico_casos_confirmados_regioes, {
-					type: 'bar',
-					data: {
-						labels: {{regioes_grafico_2 | tojson}},
-						datasets: [{
-							label: 'Casos confirmados',
-							backgroundColor: ["#8d608c","#7e567e","#704c70","#624362","#543954"],
-							borderColor: [],
-							data: {{confirmados_grafico_2 | tojson}},
-							fill: true,
-						}]
-					},
-					options: {
-						responsive: true,
-						legend: {
-							position: 'top',
-						},
-						title: {}
-					}
-			});
-		};
+            var ctx = document.getElementById('grafico-casos-confirmados').getContext('2d');
+            window.graficoCasosConfirmados = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: {{grafico_acumulado_brasil_periodo | tojson}},
+                    datasets: [{
+                        label: 'Confirmados',
+                        backgroundColor: "rgb(201,55,86,0.2)",
+                        borderColor: "rgb(201,55,86,0.5)",
+                        data: {{grafico_acumulado_brasil_casos | tojson}},
+                        fill: false,
+                    },
+                    {
+                        label: 'Óbitos',
+                        backgroundColor: "rgb(52,70,93,0.2)",
+                        borderColor: "rgb(52,70,93,0.5)",
+                        data: {{grafico_acumulado_brasil_obitos | tojson}},
+                        fill: false,
+                    }]
+                },
+                options: {
+                    responsive: false,
+                    title: {},
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Período'
+                            }
+                        }],
+                        yAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Casos confirmados'
+                            }
+                        }]
+                    }
+                }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regioes').getContext('2d');
+            window.graficoCasosConfirmadosRegioes = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_regioes_regioes | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: ["#8d608c","#7e567e","#704c70","#624362","#543954"],
+                            borderColor: [],
+                            data: {{grafico_regioes_casos | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false,
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {}
+                    }
+            });
+            ///////////////////////////
+            // Gráfico dos estados ///
+            /////////////////////////
+            // Norte
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-norte-ac').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoNorteAC = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_ac | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_ac | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-norte-am').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoNorteAM = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_am | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_am | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-norte-pa').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoNortePA = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_pa | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_pa | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-norte-ro').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoNorteRO = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_ro | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_ro | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-norte-rr').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoNorteRR = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_ro | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_ro | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-norte-to').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoNorteTO = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_ro | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_ro | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            // Nordeste
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-nordeste-al').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoNordesteAL = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_al | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_al | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-nordeste-ba').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoNordesteBA = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_ba | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_ba | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-nordeste-ce').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoNordesteCE = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_ce | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_ce | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-nordeste-ma').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoNordesteMA = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_ma | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_ma | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-nordeste-pb').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoNordestePB = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_pb | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_pb | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-nordeste-pe').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoNordestePE = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_pe | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_pe | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-nordeste-pi').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoNordestePI = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_pi | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_pi | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-nordeste-rn').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoNordesteRN = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_rn | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_rn | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-nordeste-se').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoNordesteSE = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_se | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_se | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            // Sudeste
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-sudeste-es').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoSudesteES = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_pe | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_pe | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-sudeste-mg').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoSudesteMG = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_pi | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_pi | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-sudeste-rj').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoSudesteRJ = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_rn | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_rn | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-sudeste-sp').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoSudesteSP = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_se | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_se | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            // Centro-Oeste
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-centro-oeste-df').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoCentroOesteDF = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_pe | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_pe | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-centro-oeste-go').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoCentroOesteGO = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_pi | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_pi | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-centro-oeste-ms').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoCentroOesteMS = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_rn | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_rn | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-centro-oeste-mt').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoCentroOesteMT = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_se | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_se | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            // Sul
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-sul-pr').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoSulPR = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_pi | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_pi | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-sul-sc').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoSulSC = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_rn | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_rn | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+            var ctx = document.getElementById('grafico-casos-confirmados-regiao-sul-rs').getContext('2d');
+            window.graficoCasosConfirmadosRegiaoSulRS = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: {{grafico_estados_periodo_se | tojson}},
+                        datasets: [{
+                            label: 'Casos confirmados',
+                            backgroundColor: "rgb(47,79,79,0.5)",
+                            borderColor: "rgb(47,79,79,0.5)",
+                            data: {{grafico_estados_casos_se | tojson}},
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+            });
+	    };
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js">
+
 	</script>
 </body>
 
