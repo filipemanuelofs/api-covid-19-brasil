@@ -1,4 +1,5 @@
 import os
+import logging
 from flask import Flask, render_template
 from dado_atual import DadoAtual
 from dado_historico import DadoHistorico
@@ -163,3 +164,5 @@ def get_index():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
+    app.logger.addHandler(logging.StreamHandler(sys.stdout))
+    app.logger.setLevel(logging.ERROR)
