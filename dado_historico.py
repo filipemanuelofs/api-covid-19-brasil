@@ -67,9 +67,10 @@ class DadoHistorico:
         '''
         Retorna uma tupla contendo a data, no formato dd/MM, do pior dia e a quantidade de confirmados neste dia.
         '''
-        historicos = self.__get_dados(
-        )  # Chamando a função __get_dados() ao invés
-        historicos.reverse()  # do self.dados por conta do .reverse()
+        historicos = self.__get_dados()
+        # Chamando a função __get_dados() ao invés
+        # do self.dados por conta do .reverse()
+        historicos.reverse()
         num_confirmados = 0
         num_confirmados_aux = 0
         data = None
